@@ -39,6 +39,3 @@ RUN mkdir -p uploads static/visualizations
 
 # Expose port
 EXPOSE 8080
-
-# Run the application with gunicorn
-CMD gunicorn --bind 0.0.0.0:8080 --workers 1 --timeout 300 app:app
