@@ -5,6 +5,7 @@ FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=/app
+ENV PORT=8080
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -40,4 +41,4 @@ RUN mkdir -p uploads static/visualizations
 EXPOSE 8080
 
 # Run the application with gunicorn
-CMD gunicorn --bind 0.0.0.0:$PORT --workers 1 --timeout 300 app:app 
+CMD gunicorn --bind 0.0.0.0:8080 --workers 1 --timeout 300 ocr_service:app
